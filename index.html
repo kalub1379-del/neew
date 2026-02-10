@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Teddy Day 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+position:relative;
+background:linear-gradient(-45deg,#f8cdda,#f6a6c1,#ffd6e7,#f8cdda);
+background-size:400% 400%;
+animation:gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Floating Hearts */
+.heart{
+position:absolute;
+font-size:18px;
+color:#ff4d94;
+opacity:0.25;
+animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* Responsive */
+@media(max-width:768px){
+.card{padding:40px 20px;}
+h1{font-size:40px;}
+.mediaBox{width:220px;height:220px;}
+.scratchBox{width:300px;height:170px;}
+canvas{width:300px!important;height:170px!important;}
+}
+
+/* Card */
+.card{
+width:90%;
+max-width:1000px;
+padding:80px;
+border-radius:45px;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(40px);
+box-shadow:0 60px 160px rgba(0,0,0,0.15);
+text-align:center;
+display:none;
+animation:fade 0.8s ease;
+position:relative;
+z-index:2;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:65px;
+color:#e91e63;
+margin-bottom:20px;
+}
+
+p{
+font-size:18px;
+color:#6b003f;
+line-height:1.9;
+}
+
+button{
+margin-top:40px;
+padding:18px 45px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ff2e75,#ff66a3);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 25px 70px rgba(255,0,120,0.4);
+}
+button:hover{transform:scale(1.08);}
+
+/* Unlock Pulse */
+.pulse{
+animation:pulseGlow 1.5s infinite;
+}
+@keyframes pulseGlow{
+0%{box-shadow:0 0 0 rgba(255,0,120,0.6);}
+50%{box-shadow:0 0 25px rgba(255,0,120,1);}
+100%{box-shadow:0 0 0 rgba(255,0,120,0.6);}
+}
+
+.mediaBox{
+width:280px;
+height:280px;
+margin:40px auto;
+border-radius:35px;
+overflow:hidden;
+box-shadow:0 40px 100px rgba(255,0,120,0.4);
+}
+.mediaBox video,
+.mediaBox img{
+width:100%;height:100%;object-fit:cover;border-radius:35px;
+}
+
+/* Scratch Box */
+.scratchBox{
+position:relative;
+width:360px;
+height:200px;
+margin:50px auto;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(255,0,120,0.3);
+}
+
+.hiddenMessage{
+position:absolute;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Great Vibes',cursive;
+font-size:40px;
+color:#e91e63;
+background:#fff0f5;
+text-align:center;
+opacity:0;
+transform:scale(0.8);
+transition:0.8s;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+}
+
+/* LETTER */
+.letterDoc{
+background:white;
+border-radius:35px;
+padding:70px;
+border:2px solid #ffc1d6;
+box-shadow:0 40px 120px rgba(255,0,120,0.15);
+line-height:2.2;
+font-size:19px;
+color:#6b003f;
+margin-top:40px;
+}
+
+.letterTitle{
+font-family:'Great Vibes',cursive;
+font-size:75px;
+color:#e91e63;
+margin-bottom:30px;
+}
+
+@keyframes fall{
+0%{transform:translateY(-20px);}
+100%{transform:translateY(100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+   <audio id="background_music" src="ReelAudio-49800.mp3" loop ></audio>
+
+<script>
+  window.addEventListener("DOMContentLoaded", (event) => {
+        const audio = document.getElementById("background_music");
+        const unmuteButton = document.getElementById("yesbtn");
+
+    // Attempt to play the audio (it will be muted due to the HTML attribute)
+    
+
+    // Add a click listener to the button to allow the user to unmute
+    unmuteButton.addEventListener("click", () => {
+        audio.play()
+    });
+});
+
+
+for(let i=0;i<30;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"%";
+h.style.animationDuration=(6+Math.random()*6)+"s";
+document.body.appendChild(h);
+}
+</script>
+
+
+<!-- STEP 1 -->
+<div class="card" id="step1">
+<h1>Something Special For You 💖</h1>
+<div class="mediaBox">
+<video autoplay loop muted playsinline>
+<source src="teddy1.mp4" type="video/mp4">
+</video>
+</div>
+<p>Close your eyes and feel the warmest teddy hug 🧸✨</p>
+<button id="yesbtn" onclick="next(2,event)">Open 🎀</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="card" id="step2">
+<h1>This is for uhh 🤭💕</h1>
+<div class="mediaBox">
+<img src="teddy2.gif">
+</div>
+<p>A tiny surprise before the real one ✨</p>
+<button onclick="next(3,event)">Continue ➜</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="card" id="step3">
+<h1>For You ❤️</h1>
+<div class="mediaBox">
+<video autoplay loop muted playsinline>
+<source src="teddy3.mp4" type="video/mp4">
+</video>
+</div>
+
+<p class="forYouText">
+"This teddy is just for you ❤️ <br>
+Whenever you miss me, hug it for me." 🧸💕
+</p>
+
+<button onclick="next(4,event)">Scratch Surprise 💌</button>
+</div>
+
+<!-- STEP 4 -->
+<div class="card" id="step4">
+<h1>Scratch To Reveal 💖</h1>
+
+<div class="scratchBox">
+<div class="hiddenMessage" id="msg">
+❤️ You Are My Forever Person 💖
+</div>
+<canvas id="scratchCanvas" width="360" height="200"></canvas>
+</div>
+
+<button id="letterBtn" onclick="openLetter(event)" disabled>Unlock Letter 💌</button>
+</div>
+
+<!-- LETTER (UNCHANGED + GIF PRESENT) -->
+<div class="card" id="finalPage">
+<div class="letterTitle">Happy Teddy Day 💖✨</div>
+<div class="letterDoc">
+
+<span class="greet">Hey love 💞</span><br><br>
+
+You are my softest hug, my cutest smile,  
+and the most beautiful part of my world 🧸✨  
+
+Being with you feels warm, peaceful,  
+and magical every single day 💕  
+
+I promise to stay with you, support you,  
+care for you, and love you endlessly 💖  
+
+<div class="mediaBox" style="width:180px;height:180px;margin:40px auto;">
+<video autoplay loop muted playsinline>
+<source src="teddy4.mp4" type="video/mp4">
+</video>
+</div>
+
+<span class="sign">Forever Yours 💖</span>
+
+</div>
+</div>
+
+<script>
+document.getElementById("step1").style.display="block";
+
+function next(step,e){
+document.querySelectorAll(".card").forEach(c=>c.style.display="none");
+document.getElementById("step"+step).style.display="block";
+}
+
+function openLetter(e){``
+document.querySelectorAll(".card").forEach(c=>c.style.display="none");
+document.getElementById("finalPage").style.display="block";
+}
+
+/* SCRATCH */
+const canvas=document.getElementById("scratchCanvas");
+const ctx=canvas.getContext("2d");
+const btn=document.getElementById("letterBtn");
+const msg=document.getElementById("msg");
+
+let gradient=ctx.createLinearGradient(0,0,360,200);
+gradient.addColorStop(0,"#dddddd");
+gradient.addColorStop(0.5,"#f5f5f5");
+gradient.addColorStop(1,"#cccccc");
+ctx.fillStyle=gradient;
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+let isDrawing=false;
+let revealed=false;
+
+canvas.addEventListener("mousedown",()=>isDrawing=true);
+canvas.addEventListener("mouseup",()=>isDrawing=false);
+
+canvas.addEventListener("mousemove",(e)=>{
+if(!isDrawing||revealed) return;
+ctx.globalCompositeOperation="destination-out";
+ctx.beginPath();
+ctx.arc(e.offsetX,e.offsetY,25,0,Math.PI*2);
+ctx.fill();
+checkReveal();
+});
+
+function checkReveal(){
+let pixels=ctx.getImageData(0,0,canvas.width,canvas.height);
+let count=0;
+for(let i=3;i<pixels.data.length;i+=4){
+if(pixels.data[i]===0) count++;
+}
+let percent=(count/(canvas.width*canvas.height))*100;
+
+if(percent>65 && !revealed){
+revealed=true;
+canvas.style.display="none";
+msg.style.opacity="1";
+msg.style.transform="scale(1)";
+btn.disabled=false;
+btn.classList.add("pulse");
+
+for(let i=0;i<30;i++){
+let h=document.createElement("div");
+h.innerHTML="💖";
+h.style.position="fixed";
+h.style.left=Math.random()*100+"%";
+h.style.top="-20px";
+h.style.fontSize="22px";
+h.style.animation="fall 3s linear forwards";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),3000);
+}
+}
+}
+</script>
+
+</body>
+</html>
